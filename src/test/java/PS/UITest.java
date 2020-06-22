@@ -13,11 +13,56 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-
 public class UITest {
 
     private ChromeDriver webdriver;
     private static final String ERROR_MESSAGE = "An account using this email address has already been registered. Please enter a valid password or request a new one.";
+
+    void fillEmail_create(String email_create) {
+
+        webdriver.findElement(By.id("email_create")).sendKeys(email_create);
+    }
+    void fillCustomer_firstname(String customer_firstname)
+    {
+        webdriver.findElement(By.id("customer_firstname")).sendKeys(customer_firstname);
+    }
+    void fillCustomer_lastname(String customer_lastname)
+    {
+        webdriver.findElement(By.id("customer_lastname")).sendKeys(customer_lastname);
+    }
+    void fillPasswd(String passwd)
+    {
+        webdriver.findElement(By.id("passwd")).sendKeys(passwd);
+    }
+    void fillAddress1(String address1)
+    {
+        webdriver.findElement(By.id("address1")).sendKeys(address1);
+    }
+    void fillCity(String city)
+    {
+        webdriver.findElement(By.id("city")).sendKeys(city);
+    }
+    void fillId_state(String id_state)
+    {
+        Select slState = new Select( webdriver.findElement(By.id("id_state")));
+        slState.selectByVisibleText(id_state);
+        slState.selectByIndex(32);
+    }
+    void fillPostcode(String postcode)
+    {
+        webdriver.findElement(By.id("postcode")).sendKeys(postcode);
+    }
+    void fillId_country(String id_country)
+    {
+        Select slCountry = new Select( webdriver.findElement(By.id("id_country")));
+        slCountry.selectByVisibleText(id_country);
+        slCountry.selectByIndex(1);
+
+    }
+    void fillMobilePhone(String mobilePhone)
+    {
+        webdriver.findElement(By.id("phone_mobile")).sendKeys(mobilePhone);
+    }
 
     @BeforeClass
     public void open_browser() {
@@ -58,31 +103,28 @@ public Object[][] new_user()
 
         wait.until(new PageLoaded());
 
-        webdriver.findElement(By.id("email_create")).sendKeys(email_create);
+        fillEmail_create(email_create);
 
         webdriver.findElement(By.id("SubmitCreate")).click();
 
-        webdriver.findElement(By.id("customer_firstname")).sendKeys(customer_firstname);
 
-        webdriver.findElement(By.id("customer_lastname")).sendKeys(customer_lastname);
+        fillCustomer_firstname(customer_firstname);
 
-        webdriver.findElement(By.id("passwd")).sendKeys(passwd);
+        fillCustomer_lastname(customer_lastname);
 
-        webdriver.findElement(By.id("address1")).sendKeys(address1);
+        fillPasswd(passwd);
 
-        webdriver.findElement(By.id("city")).sendKeys(city);
+       fillAddress1(address1);
 
-        Select slState = new Select( webdriver.findElement(By.id("id_state")));
-        slState.selectByVisibleText(id_state);
-        slState.selectByIndex(32);
+       fillCity(city);
 
-        webdriver.findElement(By.id("postcode")).sendKeys(postcode);
+        fillId_state(id_state);
 
-        Select slCountry = new Select( webdriver.findElement(By.id("id_country")));
-        slCountry.selectByVisibleText(id_country);
-        slCountry.selectByIndex(1);
+        fillPostcode(postcode);
 
-        webdriver.findElement(By.id("phone_mobile")).sendKeys(phone_mobile);
+        fillId_country(id_country);
+
+       fillMobilePhone(phone_mobile);
 
         webdriver.findElement(By.id("submitAccount")).click();
     }
@@ -105,25 +147,21 @@ public Object[][] new_user()
 
         wait.until(new PageLoaded());
 
-        webdriver.findElement(By.id("email_create")).sendKeys(email_create);
+        fillEmail_create(email_create);
 
         webdriver.findElement(By.id("SubmitCreate")).click();
 
-        webdriver.findElement(By.id("customer_lastname")).sendKeys(customer_lastname);
+        fillCustomer_lastname(customer_lastname);
 
-        webdriver.findElement(By.id("passwd")).sendKeys(passwd);
+        fillPasswd(passwd);
 
-        Select slState = new Select( webdriver.findElement(By.id("id_state")));
-        slState.selectByVisibleText(id_state);
-        slState.selectByIndex(32);
+       fillId_state(id_state);
 
-        webdriver.findElement(By.id("postcode")).sendKeys(postcode);
+        fillPostcode(postcode);
 
-        Select slCountry = new Select( webdriver.findElement(By.id("id_country")));
-        slCountry.selectByVisibleText(id_country);
-        slCountry.selectByIndex(1);
+        fillId_country(id_country);
 
-        webdriver.findElement(By.id("phone_mobile")).sendKeys(phone_mobile);
+       fillMobilePhone(phone_mobile);
 
         webdriver.findElement(By.id("submitAccount")).click();
 
